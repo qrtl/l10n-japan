@@ -46,11 +46,8 @@
                         t-as="line"
                     >
                         <t t-if="line == invoice.invoice_line_ids[0]">
-                            <tr name="invoice_reference">
-                                <td
-                                    name="td_invoice_reference"
-                                    t-att-colspan="line_columns"
-                                >
+                            <tr>
+                                <td t-att-colspan="line_columns">
                                     <span t-field="invoice.invoice_date" />
                                     <span t-field="invoice.name" />
                                 </td>
@@ -61,7 +58,7 @@
                             t-set="taxes"
                             t-value="', '.join([(tax.description or tax.name) for tax in line.tax_ids])"
                         />
-                        <tr name="invoice_line_row">
+                        <tr>
                             <td t-if="show_order_number" name="td_order_num">
                                 <span t-esc="order.name" />
                             </td>
@@ -104,7 +101,7 @@
                         t-if="o.company_id.show_invoice_narration and invoice.narration"
                         name="invoice_narration"
                     >
-                        <td name="td_narration" t-att-colspan="line_columns">
+                        <td t-att-colspan="line_columns">
                             <span t-field="invoice.narration" />
                         </td>
                     </tr>
